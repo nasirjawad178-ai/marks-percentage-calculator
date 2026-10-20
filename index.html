@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marks Percentage Calculator - By Nasir Jawad</title>
+<style>
+body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;margin:0}
+.box{background:#fff;width:100%;max-width:420px;padding:28px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+h2{color:#2c3e9c;text-align:center;margin:0}
+.sub{text-align:center;color:#666;font-size:13px;margin:6px 0 18px}
+input{width:100%;padding:14px;margin:8px 0;border-radius:10px;border:1.5px solid #ddd;box-sizing:border-box;font-size:16px}
+button{width:100%;padding:14px;background:#2c3e9c;color:#fff;border:0;border-radius:10px;font-size:18px;font-weight:bold;margin-top:10px;cursor:pointer}
+#res{margin-top:18px;background:#eef2ff;padding:16px;border-radius:12px;text-align:center;display:none;font-size:20px;font-weight:bold;color:#2c3e9c}
+.footer{margin-top:18px;text-align:center;font-size:13px;color:#888}
+.footer b{color:#2c3e9c}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>📊 Marks Calculator</h2>
+<div class="sub">Calculate your percentage easily</div>
+<input type="number" id="ob" placeholder="Obtained Marks e.g. 850">
+<input type="number" id="tot" placeholder="Total Marks e.g. 1100">
+<button onclick="calc()">Calculate Percentage</button>
+<div id="res"></div>
+<div class="footer">Made with ❤️ by <b>Nasir Jawad</b></div>
+</div>
+<script>
+function calc(){
+let o=document.getElementById('ob').value, t=document.getElementById('tot').value;
+let r=document.getElementById('res');
+if(!o||!t){r.style.display='block';r.innerHTML='⚠️ Please enter both values';return;}
+let p=(o/t*100).toFixed(2);
+let g=p>=80?'A+':p>=70?'A':p>=60?'B':p>=50?'C':p>=40?'D':'Fail';
+r.style.display='block';r.innerHTML=p+'% - Grade '+g+'<br><small style=font-size:14px;font-weight:normal>'+o+' out of '+t+'</small>';
+}
+</script>
+</body>
+</html>
