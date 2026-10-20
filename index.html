@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marks Percentage Calculator</title>
+<style>
+body{font-family:Arial,sans-serif;background:#eef2ff;display:flex;justify-content:center;padding:20px;margin:0}
+.box{background:#fff;width:100%;max-width:400px;padding:24px;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,.1)}
+h2{color:#2c3e9c;text-align:center}
+input{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box;font-size:16px}
+button{width:100%;padding:13px;background:#2c3e9c;color:#fff;border:0;border-radius:8px;font-size:17px;margin-top:8px}
+#res{margin-top:16px;background:#eef2ff;padding:14px;border-radius:10px;text-align:center;display:none;font-size:18px}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>Marks Calculator</h2>
+<input type="number" id="ob" placeholder="Obtained Marks e.g. 850">
+<input type="number" id="tot" placeholder="Total Marks e.g. 1100">
+<button onclick="calc()">Calculate</button>
+<div id="res"></div>
+</div>
+<script>
+function calc(){
+let o=document.getElementById('ob').value, t=document.getElementById('tot').value;
+let r=document.getElementById('res');
+if(!o||!t){r.style.display='block';r.innerHTML='Enter both values';return;}
+let p=(o/t*100).toFixed(2);
+let g=p>=80?'A+':p>=70?'A':p>=60?'B':p>=50?'C':p>=40?'D':'Fail';
+r.style.display='block';r.innerHTML=p+'% - '+g+'<br><small>'+o+'/'+t+'</small>';
+}
+</script>
+</body>
+</html>
