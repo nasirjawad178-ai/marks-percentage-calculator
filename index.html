@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marks Percentage Calculator</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #eef2ff;
+  padding: 20px;
+}
+.card {
+  max-width: 420px;
+  margin: 25px auto;
+  padding: 24px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px #0002;
+}
+h2 { text-align: center; color: #243b80; }
+label { display: block; margin-top: 14px; }
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 16px;
+}
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 22px;
+  background: #2855d9;
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  font-size: 17px;
+}
+#result {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  white-space: pre-line;
+}
+</style>
+</head>
+<body>
+<div class="card">
+<h2>Marks Percentage Calculator</h2>
+
+<label>Matric Obtained Marks</label>
+<input id="matric" type="number" min="0" placeholder="Enter matric marks">
+
+<label>Matric Total Marks</label>
+<input id="matricTotal" type="number" min="1" value="1200">
+
+<label>FSc Obtained Marks</label>
+<input id="fsc" type="number" min="0" placeholder="Enter FSc marks">
+
+<label>FSc Total Marks</label>
+<input id="fscTotal" type="number" min="1" value="1200">
+
+<button onclick="calculate()">Calculate Percentage</button>
+<div id="result"></div>
+</div>
+
+<script>
+function calculate() {
+  const m = Number(document.getElementById('matric').value);
+  const mt = Number(document.getElementById('matricTotal').value);
+  const f = Number(document.getElementById('fsc').value);
+  const ft = Number(document.getElementById('fscTotal').value);
+  const result = document.getElementById('result');
+
+  if (
+    document.getElementById('matric').value === '' ||
+    document.getElementById('fsc').value === '' ||
+    mt <= 0 || ft <= 0 ||
+    m < 0 || f < 0 || m > mt || f > ft
+  ) {
+    result.textContent = 'Please enter valid marks and totals.';
+    return;
+  }
+
+  result.textContent =
+    'Matric Percentage: ' + (m / mt * 100).toFixed(2) + '%' +
+    '\nFSc Percentage: ' + (f / ft * 100).toFixed(2) + '%';
+}
+</script>
+</body>
+</html>
